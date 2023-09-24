@@ -9,7 +9,7 @@ public class App
         // new BasicsDemo().run();
         // new HomeworkReadline().run();
         // new DirDemo().run();
-        new FileIoDemo().run();
-//        new OopDemo().run();
+//        new FileIoDemo().run();
+        new OopDemo().run();
     }
 }
