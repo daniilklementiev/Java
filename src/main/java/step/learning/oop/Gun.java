@@ -10,14 +10,25 @@ import java.util.List;
 import java.util.stream.Stream;
 
 @Serializable
-public class Gun extends Weapon implements Classified{
+public class Gun extends Weapon implements Classified/*, Used*/{
     @Required
     private int Cartridge;
 
+    private int _yearsInUse;
+
+//    public Gun(String name, int cartridge, int yearsInUse) {
+//        super.setName(name);
+//        this.setCartridge(cartridge);
+//        this._yearsInUse = yearsInUse;
+//    }
     public Gun(String name, int cartridge) {
         super.setName(name);
         this.setCartridge(cartridge);
+//        this._yearsInUse = 0;
     }
+//    public void set_yearsInUse(int _yearsInUse) {
+//        this._yearsInUse = _yearsInUse;
+//    }
     public int getCartridge() {
         return Cartridge;
     }
@@ -26,7 +37,7 @@ public class Gun extends Weapon implements Classified{
     }
     @Override
     public String getCard() {
-        return String.format("Gun %s - %d bullets", super.getName(), getCartridge());
+        return String.format("Gun %s - %d bullets"/*%d years in use*/, super.getName(), getCartridge()/*, getYears()*/);
     }
 
     @Override
@@ -54,4 +65,9 @@ public class Gun extends Weapon implements Classified{
                         .filter( field-> field.isAnnotationPresent ( Required.class ) )
                         .allMatch( field -> jsonObject.has(field.getName()));
     }
+
+//    @Override
+//    public int getYears() {
+//        return _yearsInUse;
+//    }
 }

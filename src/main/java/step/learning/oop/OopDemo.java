@@ -79,6 +79,9 @@ public class OopDemo {
         armory.addWeapon(new MachineGun("M-16", 700));
         armory.addWeapon(new Rifle("AK-47", 7.62f));
         armory.addWeapon(new Rifle("Dragunov", 7.62f));
+        armory.addWeapon(new ShotGun("Remington 870", 50));
+        armory.addWeapon(new ShotGun("Benelli M4", 50));
+
         armory.printAll();
         System.out.println("--------------------");
         armory.printAutomatic();
