@@ -1,6 +1,7 @@
 package step.learning;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import step.learning.async.AsyncDemo;
 import step.learning.files.FileIoDemo;
 import step.learning.ioc.ConfigModule;
 import step.learning.ioc.IocDemo;
@@ -21,6 +22,7 @@ public class App
 //        Injector injector = Guice.createInjector(new ConfigModule());
 //        IocDemo iocDemo = injector.getInstance(IocDemo.class);
 //        iocDemo.run();
-        Guice.createInjector(new ConfigModule()).getInstance(IocDemo2.class).run();
+//        Guice.createInjector(new ConfigModule()).getInstance(IocDemo2.class).run();
+        new AsyncDemo().run();
     }
 }
