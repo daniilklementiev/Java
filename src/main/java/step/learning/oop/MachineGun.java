@@ -3,15 +3,25 @@ package step.learning.oop;
 import com.google.gson.JsonObject;
 
 @Serializable
-public class MachineGun extends Weapon implements Automatic, Classified{
+public class MachineGun extends Weapon implements Automatic, Classified, Used{
     @Override
     public String getLevel() {
         return "For military";
     }
 
-    MachineGun(String name, double firerate) {
+    @Required
+    private int yearsInUse;
+    public int getYearsInUse() {
+        return yearsInUse;
+    }
+
+    MachineGun(String name, double firerate, int yearsInUse) {
         super.setName(name);
         this.setFireRate(firerate);
+        this.yearsInUse = yearsInUse;
+    }
+    public String getYears() {
+        return getYearsInUse() + " years in use";
     }
     private double fireRate;
     public double getFireRate() {
@@ -28,13 +38,13 @@ public class MachineGun extends Weapon implements Automatic, Classified{
 
     @JsonFactory
     public static MachineGun fromJson(JsonObject jsonObject){
-        String[] requiredFields = {"name", "fireRate"};
+        String[] requiredFields = {"name", "fireRate", "yearsInUse"};
         for(String field : requiredFields) {
             if(!jsonObject.has(field)) {
                 throw new IllegalArgumentException(String.format("Missing required field '%s'", field));
             }
         }
-        return new MachineGun(jsonObject.get(requiredFields[0]).getAsString(), jsonObject.get(requiredFields[1]).getAsDouble());
+        return new MachineGun(jsonObject.get(requiredFields[0]).getAsString(), jsonObject.get(requiredFields[1]).getAsDouble(), jsonObject.get(requiredFields[2]).getAsInt());
     }
 
     @JsonParseChecker

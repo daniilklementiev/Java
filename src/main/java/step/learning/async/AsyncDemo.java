@@ -15,27 +15,15 @@ public class AsyncDemo {
     private static int threadsFinished = 0;
 
     public void run() {
-        /*
-         *   Д.З. Засобами багатопоточності реалізувати задачу формування
-         *    pandigital числа, яке складається з усіх цифр 0-9. Порядок
-         *    цифр ролі не грає.
-         *    Запустити 10 потоків, кожен з яких здійснює затримку на 1с
-         *    після чого додає свою цифру до спільного
-         *    "числа" (String) та виводить проміжний результат:
-         *      додано 7, результат 1287
-         *    Передбачити усі необхідні заходи синхронізації.
-         *    У кінці виводиться підсумок один раз
-         *     ---------
-         *     Результат 1287034659
-         */
         for (int i = 0; i < NUM_THREADS; i++) {
             final int threadNumber = i;
             Thread thread = new Thread(() -> {
                 try {
-                    Thread.sleep(1000); // Затримка на 1 секунду
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
                 synchronized (pandigitalNumber) {
                     pandigitalNumber.append(digits[threadNumber]);
                     System.out.println("Додано " + digits[threadNumber] + ", результат " + pandigitalNumber.toString());

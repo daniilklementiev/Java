@@ -18,12 +18,12 @@ public class RandomServiceV1 implements RandomService{
 
     @Override
     public String randomHex(int charLength) {
-        StringBuilder sb = new StringBuilder();
+        char[] result = new char[charLength];
         for (int i = 0; i < charLength; i++) {
             int index = random.nextInt(HEX_CHARS.length);
-            sb.append(HEX_CHARS[index]);
+            result[i] = HEX_CHARS[index];
         }
-        return sb.toString();
+        return new String(result);
     }
 
 }

@@ -16,19 +16,14 @@ public class Gun extends Weapon implements Classified/*, Used*/{
 
     private int _yearsInUse;
 
-//    public Gun(String name, int cartridge, int yearsInUse) {
-//        super.setName(name);
-//        this.setCartridge(cartridge);
-//        this._yearsInUse = yearsInUse;
-//    }
-    public Gun(String name, int cartridge) {
+    public Gun(String name, int cartridge, int yearsInUse) {
         super.setName(name);
         this.setCartridge(cartridge);
-//        this._yearsInUse = 0;
+        this._yearsInUse = yearsInUse;
     }
-//    public void set_yearsInUse(int _yearsInUse) {
-//        this._yearsInUse = _yearsInUse;
-//    }
+    public void set_yearsInUse(int _yearsInUse) {
+        this._yearsInUse = _yearsInUse;
+    }
     public int getCartridge() {
         return Cartridge;
     }
@@ -48,13 +43,13 @@ public class Gun extends Weapon implements Classified/*, Used*/{
 
     @JsonFactory
     public static Gun fromJson(JsonObject jsonObject) {
-        String[] requiredFields = {"name", "Cartridge"};
+        String[] requiredFields = {"name", "Cartridge", "yearsInUse"};
         for(String field : requiredFields) {
             if(!jsonObject.has(field)) {
                 throw new IllegalArgumentException(String.format("Missing required field '%s'", field));
             }
         }
-        return new Gun(jsonObject.get(requiredFields[0]).getAsString(), jsonObject.get(requiredFields[1]).getAsInt());
+        return new Gun(jsonObject.get(requiredFields[0]).getAsString(), jsonObject.get(requiredFields[1]).getAsInt(), jsonObject.get(requiredFields[2]).getAsInt());
     }
 
     @JsonParseChecker

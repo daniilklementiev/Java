@@ -27,13 +27,13 @@ public class OopDemo {
             JsonObject jsonObject = JsonParser.parseReader(reader).getAsJsonObject();
             Weapon weapon = null;
             if(jsonObject.has("Cartridge")) {
-                weapon = new Gun(jsonObject.get("name").getAsString(), jsonObject.get("Cartridge").getAsInt());
+                weapon = new Gun(jsonObject.get("name").getAsString(), jsonObject.get("Cartridge").getAsInt(), jsonObject.get("yearsInUse").getAsInt());
             }
             else if (jsonObject.has("fireRate")) {
-                weapon = new MachineGun(jsonObject.get("name").getAsString(), jsonObject.get("fireRate").getAsDouble());
+                weapon = new MachineGun(jsonObject.get("name").getAsString(), jsonObject.get("fireRate").getAsDouble(), jsonObject.get("yearsInUse").getAsInt());
             }
             else if (jsonObject.has("caliber")) {
-                weapon = new Rifle(jsonObject.get("name").getAsString(), jsonObject.get("caliber").getAsFloat());
+                weapon = new Rifle(jsonObject.get("name").getAsString(), jsonObject.get("caliber").getAsFloat(), jsonObject.get("yearsInUse").getAsInt());
             }
             else {
                 System.err.println("Weapon type unrecognized");
@@ -72,13 +72,13 @@ public class OopDemo {
                 return String.format("Weapon %s", getName());
             }
         };
-        armory.addWeapon(new Gun("Makarov", 9));
-        armory.addWeapon(new MachineGun("KM-7,62", 650));
-        armory.addWeapon(new Rifle("L96A1", 7.62f));
-        armory.addWeapon(new Gun("Colt Defender", 8));
-        armory.addWeapon(new MachineGun("M-16", 700));
-        armory.addWeapon(new Rifle("AK-47", 7.62f));
-        armory.addWeapon(new Rifle("Dragunov", 7.62f));
+        armory.addWeapon(new Gun("Makarov", 9, 0));
+        armory.addWeapon(new MachineGun("KM-7,62", 650, 0));
+        armory.addWeapon(new Rifle("L96A1", 7.62f, 0));
+        armory.addWeapon(new Gun("Colt Defender", 8, 0));
+        armory.addWeapon(new MachineGun("M-16", 700, 0));
+        armory.addWeapon(new Rifle("AK-47", 7.62f, 0));
+        armory.addWeapon(new Rifle("Dragunov", 7.62f, 0));
         armory.addWeapon(new ShotGun("Remington 870", 50));
         armory.addWeapon(new ShotGun("Benelli M4", 50));
 

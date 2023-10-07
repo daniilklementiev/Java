@@ -27,11 +27,11 @@ public class IocDemo2 {
     private HashService digestHashService2;
 
     public void run() {
-        System.out.println("IocDemo2.run");
-        System.out.println("digestHashService.hash(\"IoC Demo\") = " + digestHashService.hash("IoC Demo"));
-        System.out.println("signatureHashService.hash(\"IoC Demo\") = " + signatureHashService.hash("IoC Demo"));
-        System.out.println("digestHashService2.hash(\"IoC Demo\") = " + digestHashService2.hash("IoC Demo"));
-        System.out.println(digestHashService.hashCode() + " " + digestHashService2.hashCode());
+//        System.out.println("IocDemo2.run");
+//        System.out.println("digestHashService.hash(\"IoC Demo\") = " + digestHashService.hash("IoC Demo"));
+//        System.out.println("signatureHashService.hash(\"IoC Demo\") = " + signatureHashService.hash("IoC Demo"));
+//        System.out.println("digestHashService2.hash(\"IoC Demo\") = " + digestHashService2.hash("IoC Demo"));
+//        System.out.println(digestHashService.hashCode() + " " + digestHashService2.hashCode());
         System.out.println(randomService.randomHex(6));
     }
 }
